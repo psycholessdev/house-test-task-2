@@ -7,7 +7,6 @@ export default async function Home({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const titleLike = (await searchParams)['title_like']
-  console.log(titleLike)
 
   return (
     <div className={styles['main-page']}>
