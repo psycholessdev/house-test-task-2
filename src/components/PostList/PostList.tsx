@@ -6,7 +6,7 @@ import { useGetPostsQuery } from '@/store/postsSlice'
 
 import { Post, PostSkeleton } from '@/components'
 
-const PostSkeletonList = () => {
+export const PostSkeletonList = () => {
   return (
     <>
       {Array(9)
@@ -20,8 +20,8 @@ const PostSkeletonList = () => {
 
 export const PostList = () => {
   const searchParams = useSearchParams()
-  const page = searchParams.get('page')
-  const search = searchParams.get('title_like')
+  const page = searchParams.get('page') || '1'
+  const search = searchParams.get('title_like') || ''
 
   const { data: posts, isLoading } = useGetPostsQuery({ page, search })
 
@@ -30,7 +30,12 @@ export const PostList = () => {
       {isLoading && <PostSkeletonList />}
 
       {posts?.map(post => (
-        <Post id={post.id} title={post.title} body={post.body} key={post.id} />
+        <Post
+          id={post.id.toString()}
+          title={post.title}
+          body={post.body}
+          key={post.id.toString()}
+        />
       ))}
     </div>
   )

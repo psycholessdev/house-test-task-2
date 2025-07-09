@@ -17,12 +17,14 @@ export const SearchBar = () => {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
+  const titleLike = searchParams.get('title_like')
+
   const form = useForm<SearchBarFormData>({
     mode: 'onChange',
     reValidateMode: 'onChange',
     resolver: zodResolver(searchBarFormSchema),
     defaultValues: {
-      titleLike: searchParams.get('title_like') || '',
+      titleLike: titleLike || '',
     },
   })
 
@@ -35,12 +37,12 @@ export const SearchBar = () => {
       const params = new URLSearchParams(searchParams.toString())
       params.delete(name)
       if (value.length > 0) {
-        if (value !== searchParams.get('title_like')) {
+        if (value !== titleLike) {
           // Reset page for new searches if the titleLike changed
           params.set('page', '1')
         }
         params.set(name, value)
-      } else if (searchParams.get('title_like')?.length > 0) {
+      } else if (titleLike && titleLike.length > 0) {
         // Reset page when the titleLike was cleared
         params.set('page', '1')
       }
@@ -56,13 +58,7 @@ export const SearchBar = () => {
 
   return (
     <form className={styles['search-bar']} onSubmit={e => e.preventDefault()}>
-      <Input
-        type="text"
-        name="titleLike"
-        label="Поиск по названию"
-        sizeFull
-        {...form.register('titleLike')}
-      />
+      <Input type="text" label="Поиск по названию" sizeFull {...form.register('titleLike')} />
     </form>
   )
 }

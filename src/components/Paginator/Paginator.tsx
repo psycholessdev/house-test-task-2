@@ -22,7 +22,7 @@ export const Paginator = () => {
       nextLabel=">"
       previousLabel="<"
       onPageChange={handlePageChange}
-      forcePage={Math.max(0, page - 1)}
+      forcePage={Math.max(0, Number(page) - 1)}
       pageRangeDisplayed={5}
       pageCount={10} // the task requested only 10 pages
       containerClassName={styles.paginator}
