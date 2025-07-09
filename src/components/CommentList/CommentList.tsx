@@ -19,18 +19,13 @@ const CommentSkeletonList = () => {
 
 export const CommentList: React.FC<{ postId: string }> = ({ postId }) => {
   const { data: comments, isLoading } = useGetPostCommentsQuery(postId)
+
   return (
     <div className={styles['comment-list']}>
       {isLoading && <CommentSkeletonList />}
 
       {comments?.map(comment => (
-        <Comment
-          id={comment.id}
-          name={comment.name}
-          email={comment.email}
-          body={comment.body}
-          key={comment.id}
-        />
+        <Comment name={comment.name} email={comment.email} body={comment.body} key={comment.id} />
       ))}
     </div>
   )

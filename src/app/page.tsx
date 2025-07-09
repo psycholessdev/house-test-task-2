@@ -1,7 +1,7 @@
 import styles from './page.module.scss'
 import { SearchBar, PostList, Paginator } from '@/components'
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className={styles['main-page']}>
       <h1 className={styles['main-page__title']}>Cписок постов</h1>
