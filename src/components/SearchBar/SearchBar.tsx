@@ -34,12 +34,15 @@ export const SearchBar = () => {
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString())
       params.delete(name)
-      if (value !== '') {
+      if (value.length > 0) {
         if (value !== searchParams.get('title_like')) {
           // Reset page for new searches if the titleLike changed
           params.set('page', '1')
         }
         params.set(name, value)
+      } else if (searchParams.get('title_like')?.length > 0) {
+        // Reset page when the titleLike was cleared
+        params.set('page', '1')
       }
 
       return params.toString()

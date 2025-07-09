@@ -14,7 +14,7 @@ interface IInput {
   disabled?: boolean
 }
 
-const Input = ({
+export const Input = ({
   value,
   onChange,
   label,
@@ -46,4 +46,3 @@ const Input = ({
     </div>
   )
 }
-export default Input

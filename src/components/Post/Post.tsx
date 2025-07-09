@@ -13,7 +13,7 @@ interface IPost {
 
 export const Post: React.FC<IPost> = ({ id, body, title, onClick }) => {
   return (
-    <Link href={`/post/${id}`} className={styles.post} onClick={onClick}>
+    <Link href={`/${id}`} className={styles.post} onClick={onClick}>
       <div className={styles.post__title}>{title}</div>
       <p className={styles.post__content}>{body}</p>
     </Link>

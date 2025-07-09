@@ -27,11 +27,6 @@ export const postsApi = createApi({
         `/posts?_page=${page}&_limit=9${search ? `&title_like=${search}` : ''}`,
     }),
 
-    // Fetch a single post by ID
-    getPost: builder.query<Post, string>({
-      query: id => `/posts/${id}`,
-    }),
-
     // Fetch comments for a post
     getPostComments: builder.query<Comment[], string>({
       query: postId => `/posts/${postId}/comments`,
@@ -39,4 +34,4 @@ export const postsApi = createApi({
   }),
 })
 
-export const { useGetPostsQuery, useGetPostQuery, useGetPostCommentsQuery } = postsApi
+export const { useGetPostsQuery, useGetPostCommentsQuery } = postsApi

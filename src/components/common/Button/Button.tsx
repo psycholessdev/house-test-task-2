@@ -7,7 +7,7 @@ interface IButton {
   disabled?: boolean
 }
 
-const Button: React.FC<IButton & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+export const Button: React.FC<IButton & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   children,
   disabled,
   ...props
@@ -21,4 +21,3 @@ const Button: React.FC<IButton & React.ButtonHTMLAttributes<HTMLButtonElement>> 
     </button>
   )
 }
-export default Button
