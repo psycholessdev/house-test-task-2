@@ -1,18 +1,14 @@
 import styles from './page.module.scss'
-import { SearchBar } from '@/components'
+import { SearchBar, PostList, Paginator } from '@/components'
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
-}) {
-  const titleLike = (await searchParams)['title_like']
-
+export default async function Home() {
   return (
     <div className={styles['main-page']}>
       <h1 className={styles['main-page__title']}>Cписок постов</h1>
 
       <SearchBar />
+      <PostList />
+      <Paginator />
     </div>
   )
 }

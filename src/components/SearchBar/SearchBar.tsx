@@ -12,7 +12,7 @@ type SearchBarFormData = z.infer<typeof searchBarFormSchema>
 
 import { Input } from '@/components/common'
 
-const SearchBar = () => {
+export const SearchBar = () => {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -35,8 +35,10 @@ const SearchBar = () => {
       const params = new URLSearchParams(searchParams.toString())
       params.delete(name)
       if (value !== '') {
-        // Reset page for new searches
-        params.set('page', '1')
+        if (value !== searchParams.get('title_like')) {
+          // Reset page for new searches if the titleLike changed
+          params.set('page', '1')
+        }
         params.set(name, value)
       }
 
@@ -61,4 +63,3 @@ const SearchBar = () => {
     </form>
   )
 }
-export default SearchBar

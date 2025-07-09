@@ -1,2 +1,5 @@
-export { default as SearchBar } from './SearchBar/SearchBar'
-export { default as StoreProvider } from './StoreProvider/StoreProvider'
+export { SearchBar } from './SearchBar/SearchBar'
+export { StoreProvider } from './StoreProvider/StoreProvider'
+export { PostList } from './PostList/PostList'
+export { Post, PostSkeleton } from './Post/Post'
+export { Paginator } from './Paginator/Paginator'
