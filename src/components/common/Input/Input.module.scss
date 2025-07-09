@@ -1,0 +1,79 @@
+.input {
+  position: relative;
+  width: 232px;
+  $input-padding: 16px;
+
+  &__input {
+    height: 56px;
+    width: 100%;
+    border: 1px solid #dcdedf;
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: calc($input-padding + 1px);
+  }
+  &__input:focus {
+    outline: none;
+    border: 2px solid #1bb55c;
+    padding: $input-padding;
+  }
+
+  &__input::placeholder {
+    color: gray;
+    transition: color 200ms ease-in-out;
+  }
+
+  &__label {
+    cursor: text;
+
+    pointer-events: none;
+    -webkit-user-select: none;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: $input-padding;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__label-text {
+    position: absolute;
+    width: max-content;
+    font-family: var(--font-ubuntu);
+    font-size: 16px;
+    color: #c0c0c0;
+    -webkit-user-select: none;
+    transition: all 0.15s ease-out;
+  }
+
+  &__input:focus + &__label &__label-text,
+  &__input:not(:placeholder-shown) + &__label &__label-text {
+    font-size: 12px;
+
+    transform: translate(0, -100%);
+    top: 15%;
+
+    padding-left: 4px;
+    padding-right: 4px;
+
+    background-color: white;
+    color: black;
+  }
+  &__input:focus + &__label &__label-text {
+    color: #1bb55c;
+  }
+
+  &__input:not(:focus)::placeholder {
+    color: transparent;
+  }
+
+  /* Modifiers */
+  &_size_full {
+    width: 100%;
+  }
+
+  &_disabled {
+    opacity: 0.5;
+  }
+}
