@@ -22,7 +22,7 @@ const SearchBar = () => {
     reValidateMode: 'onChange',
     resolver: zodResolver(searchBarFormSchema),
     defaultValues: {
-      titleLike: searchParams.get('titleLike') || '',
+      titleLike: searchParams.get('title_like') || '',
     },
   })
 
@@ -33,7 +33,6 @@ const SearchBar = () => {
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString())
-      params.delete('page')
       params.delete(name)
       if (value !== '') {
         // Reset page for new searches
